@@ -12,8 +12,8 @@ bash scripts/bootstrap-python.sh
 
 On an Apple Silicon Mac, open `BollyKaraoke.xcodeproj` and run the BollyKaraoke scheme on an iOS 27 simulator or device.
 
-Tap **Download and Play** to fetch the audio for [Mere Khwabon Mein](https://www.youtube.com/watch?v=s1LozokQjIg). The app plays the M4A file and keeps it in Application Support for offline replay. The first download needs an internet connection.
+In **Library**, tap **Download & play** on [Mere Khwabon Mein](https://www.youtube.com/watch?v=s1LozokQjIg). The app keeps the audio in Application Support and lists it under **Downloads** for offline replay. The search field filters downloaded songs by title or subtitle.
 
-Use **Pitch** to shift the key from −6 to +6 semitones and **Tempo** to adjust playback speed from 75% to 125%. Both sliders apply during playback. Set them to 0 semitones and 100% for the original key and tempo.
+In **Player**, drag the timeline to seek or tap a 10-second skip control. **Pitch** shifts the key from −6 to +6 semitones and **Tempo** adjusts speed from 75% to 125%. Both controls apply during playback, and each song remembers its settings. **Reset** restores the original key and tempo.
 
 Xcode resolves PythonKit and embeds Python 3.14.10, yt-dlp, and the certifi certificate bundle. The bootstrap script verifies each download and stores the dependencies in the git-ignored `Dependencies/` directory.

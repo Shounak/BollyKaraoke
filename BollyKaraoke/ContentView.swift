@@ -1,77 +1,60 @@
 import SwiftUI
 
 struct ContentView: View {
-    @Bindable var song: SampleSongPlayer
-
-    private var pitchValue: String {
-        let semitones = Int(song.pitchSemitones)
-        let signedValue = semitones.formatted(.number.sign(strategy: .always(includingZero: false)))
-        return "\(signedValue) \(abs(semitones) == 1 ? "semitone" : "semitones")"
-    }
-
-    private var tempoValue: String {
-        (song.tempoPercent / 100).formatted(.percent.precision(.fractionLength(0)))
-    }
+    let player: SongPlayer
+    @State private var page = Page.library
 
     var body: some View {
-        VStack(spacing: 16) {
-            VStack(spacing: 4) {
-                Text("Mere Khwabon Mein")
-                    .font(.title2.weight(.semibold))
-                Text("Dilwale Dulhania Le Jayenge")
-                    .foregroundStyle(.secondary)
-            }
-
-            VStack(spacing: 16) {
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack {
-                        Text("Pitch")
-                        Spacer()
-                        Text(pitchValue)
-                            .foregroundStyle(.secondary)
-                            .monospacedDigit()
+        Group {
+            switch page {
+            case .library:
+                LibraryView(player: player) { track in
+                    player.select(track)
+                    page = .player
+                    if !player.isPlaying {
+                        Task { await player.togglePlayback() }
                     }
-                    .accessibilityHidden(true)
-
-                    Slider(value: $song.pitchSemitones, in: -6...6, step: 1)
-                        .accessibilityLabel("Pitch")
-                        .accessibilityValue(pitchValue)
-                        .accessibilityIdentifier("sample-song-pitch")
                 }
-
-                VStack(alignment: .leading, spacing: 4) {
-                    HStack {
-                        Text("Tempo")
-                        Spacer()
-                        Text(tempoValue)
-                            .foregroundStyle(.secondary)
-                            .monospacedDigit()
-                    }
-                    .accessibilityHidden(true)
-
-                    Slider(value: $song.tempoPercent, in: 75...125, step: 1)
-                        .accessibilityLabel("Tempo")
-                        .accessibilityValue(tempoValue)
-                        .accessibilityIdentifier("sample-song-tempo")
-                }
-            }
-            .frame(maxWidth: 400)
-
-            Button(song.buttonTitle) {
-                Task { await song.togglePlayback() }
-            }
-            .buttonStyle(.borderedProminent)
-            .disabled(song.isLoading)
-            .accessibilityIdentifier("sample-song-playback")
-
-            if let error = song.error {
-                Text(error)
-                    .font(.footnote)
-                    .foregroundStyle(.secondary)
-                    .accessibilityIdentifier("sample-song-error")
+            case .player:
+                PlayerView(player: player)
             }
         }
-        .multilineTextAlignment(.center)
-        .padding()
+        .foregroundStyle(PracticeTheme.ink)
+        .tint(PracticeTheme.accent)
+        .frame(maxWidth: .infinity, maxHeight: .infinity)
+        .background(PracticeTheme.background.ignoresSafeArea())
+        .safeAreaInset(edge: .bottom, spacing: 0) {
+            HStack(spacing: 10) {
+                tab(.library, icon: "square.stack")
+                tab(.player, icon: "waveform")
+            }
+            .frame(maxWidth: 420)
+            .padding(.horizontal, 24)
+            .padding(.vertical, 8)
+            .frame(maxWidth: .infinity)
+            .background(PracticeTheme.paper.ignoresSafeArea(edges: .bottom))
+            .overlay(alignment: .top) {
+                Rectangle().fill(PracticeTheme.line).frame(height: 1)
+            }
+        }
+    }
+
+    private func tab(_ tab: Page, icon: String) -> some View {
+        Button {
+            page = tab
+        } label: {
+            Label(tab.rawValue, systemImage: icon)
+                .font(.subheadline.weight(.semibold))
+                .frame(maxWidth: .infinity, minHeight: 44)
+                .foregroundStyle(page == tab ? PracticeTheme.accent : PracticeTheme.muted)
+                .background(page == tab ? PracticeTheme.blush : .clear, in: Capsule())
+        }
+        .buttonStyle(.plain)
+        .accessibilityAddTraits(page == tab ? .isSelected : [])
+    }
+
+    private enum Page: String {
+        case library = "Library"
+        case player = "Player"
     }
 }

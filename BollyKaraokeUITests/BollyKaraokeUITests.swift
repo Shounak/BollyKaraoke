@@ -15,6 +15,10 @@ final class BollyKaraokeUITests: XCTestCase {
         XCTAssertTrue(app.staticTexts["No matching downloads"].exists)
         app.buttons["Clear search"].tap()
 
+        app.buttons["search-tab"].tap()
+        XCTAssertTrue(app.textFields["youtube-search"].waitForExistence(timeout: 5))
+        XCTAssertTrue(app.staticTexts["Search YouTube"].exists)
+
         app.buttons["Player"].tap()
         let playback = app.buttons["sample-song-playback"]
         XCTAssertTrue(playback.waitForExistence(timeout: 5))

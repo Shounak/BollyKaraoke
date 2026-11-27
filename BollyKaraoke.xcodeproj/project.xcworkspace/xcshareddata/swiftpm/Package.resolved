@@ -1,5 +1,5 @@
 {
-  "originHash" : "c37ae0f7f3518db2d2851f1d654d53a0ab68ac4d501b348e23b297e327290a1c",
+  "originHash" : "74b0e07cafe3452b0cc36524f6e6b9c77e0e28848c6f128ea41a187faa6d2804",
   "pins" : [
     {
       "identity" : "pythonkit",
@@ -7,6 +7,15 @@
       "location" : "https://github.com/pvieito/PythonKit.git",
       "state" : {
         "revision" : "fe7d97334600b0fc11fbef5e0525f93eaa68ef7e"
+      }
+    },
+    {
+      "identity" : "youtubekit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/b5i/YouTubeKit.git",
+      "state" : {
+        "revision" : "fc552768dfdaddea6c02c3c2d4e8d8e8bbf4772c",
+        "version" : "2.8.0"
       }
     }
   ],

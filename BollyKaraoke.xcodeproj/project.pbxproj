@@ -13,6 +13,7 @@
 		B0B10A000000000000000004 /* bollykaraoke_ytdlp.py in Resources */ = {isa = PBXBuildFile; fileRef = B0B10A000000000000000007 /* bollykaraoke_ytdlp.py */; };
 		B0B10A00000000000000000A /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = B0B10A00000000000000000C /* PythonKit */; };
 		B0B10A00000000000000000D /* certifi.whl in Resources */ = {isa = PBXBuildFile; fileRef = B0B10A00000000000000000E /* certifi.whl */; };
+		B0B10A000000000000000010 /* YouTubeKit in Frameworks */ = {isa = PBXBuildFile; productRef = B0B10A000000000000000012 /* YouTubeKit */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		CE26EBCE30B938F7006EC57A /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			files = (
+				B0B10A000000000000000010 /* YouTubeKit in Frameworks */,
 				B0B10A000000000000000001 /* Python.xcframework in Frameworks */,
 				B0B10A00000000000000000A /* PythonKit in Frameworks */,
 			);
@@ -118,6 +120,7 @@
 			name = BollyKaraoke;
 			packageProductDependencies = (
 				B0B10A00000000000000000C /* PythonKit */,
+				B0B10A000000000000000012 /* YouTubeKit */,
 			);
 			productName = BollyKaraoke;
 			productReference = CE26EBD130B938F7006EC57A /* BollyKaraoke.app */;
@@ -174,6 +177,7 @@
 			minimizedProjectReferenceProxies = 1;
 			packageReferences = (
 				B0B10A00000000000000000B /* XCRemoteSwiftPackageReference "PythonKit" */,
+				B0B10A000000000000000011 /* XCRemoteSwiftPackageReference "YouTubeKit" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = CE26EBD230B938F7006EC57A /* Products */;
@@ -508,6 +512,14 @@
 				revision = fe7d97334600b0fc11fbef5e0525f93eaa68ef7e;
 			};
 		};
+		B0B10A000000000000000011 /* XCRemoteSwiftPackageReference "YouTubeKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/b5i/YouTubeKit.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.8.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -515,6 +527,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = B0B10A00000000000000000B /* XCRemoteSwiftPackageReference "PythonKit" */;
 			productName = PythonKit;
+		};
+		B0B10A000000000000000012 /* YouTubeKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0B10A000000000000000011 /* XCRemoteSwiftPackageReference "YouTubeKit" */;
+			productName = YouTubeKit;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

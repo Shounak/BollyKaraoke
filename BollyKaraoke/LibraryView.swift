@@ -19,14 +19,14 @@ struct LibraryView: View {
     }
 
     private var featured: LibraryTrack {
-        player.library.downloads.first { $0.id == LibraryTrack.sample.id } ?? .sample
+        player.library.downloadedTrack(LibraryTrack.sample.id) ?? .sample
     }
 
     var body: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 22) {
                 header
-                searchField
+                SongSearchField(title: "Search your downloads", identifier: "library-search", text: $query)
                 if searchText.isEmpty {
                     featuredCard
                 }
@@ -58,38 +58,6 @@ struct LibraryView: View {
                 .font(.system(size: headingSize, weight: .semibold, design: .serif))
                 .tracking(-1.3)
                 .accessibilityAddTraits(.isHeader)
-        }
-    }
-
-    private var searchField: some View {
-        HStack(spacing: 11) {
-            Image(systemName: "magnifyingglass")
-                .font(.body.weight(.medium))
-                .foregroundStyle(PracticeTheme.muted)
-                .accessibilityHidden(true)
-            TextField("Search your downloads", text: $query,
-                      prompt: Text("Search your downloads").foregroundStyle(PracticeTheme.muted))
-                .textInputAutocapitalization(.never)
-                .autocorrectionDisabled()
-                .submitLabel(.search)
-                .accessibilityIdentifier("library-search")
-            if !query.isEmpty {
-                Button {
-                    query = ""
-                } label: {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundStyle(PracticeTheme.muted)
-                        .frame(minWidth: 44, minHeight: 44)
-                }
-                .buttonStyle(.plain)
-                .accessibilityLabel("Clear search")
-            }
-        }
-        .padding(.horizontal, 15)
-        .frame(minHeight: 52)
-        .background(PracticeTheme.paper, in: RoundedRectangle(cornerRadius: 16))
-        .overlay {
-            RoundedRectangle(cornerRadius: 16).strokeBorder(PracticeTheme.line, lineWidth: 1)
         }
     }
 

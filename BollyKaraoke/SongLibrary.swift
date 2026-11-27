@@ -16,6 +16,10 @@ struct LibraryTrack: Codable, Identifiable, Equatable {
         duration: 0,
         downloadedAt: nil
     )
+
+    static func isVideoID(_ id: String) -> Bool {
+        id.range(of: #"^[A-Za-z0-9_-]{11}$"#, options: .regularExpression) != nil
+    }
 }
 
 struct PracticeSettings: Codable, Equatable {
@@ -45,7 +49,7 @@ final class SongLibrary {
             guard file.pathExtension == "json",
                   let data = try? Data(contentsOf: file),
                   let track = try? JSONDecoder().decode(LibraryTrack.self, from: data),
-                  Self.isVideoID(track.id),
+                  LibraryTrack.isVideoID(track.id),
                   file.deletingPathExtension().lastPathComponent == track.id,
                   FileManager.default.fileExists(atPath: audioURL(for: track.id).path) else { return nil }
             return track
@@ -68,7 +72,11 @@ final class SongLibrary {
     }
 
     func isDownloaded(_ id: String) -> Bool {
-        downloads.contains { $0.id == id }
+        downloadedTrack(id) != nil
+    }
+
+    func downloadedTrack(_ id: String) -> LibraryTrack? {
+        downloads.first { $0.id == id }
     }
 
     func audioURL(for id: String) -> URL {
@@ -89,11 +97,11 @@ final class SongLibrary {
 
     func download(_ track: LibraryTrack) async throws -> LibraryTrack {
         let id = track.id
-        guard Self.isVideoID(id), let source = URL(string: "https://www.youtube.com/watch?v=\(id)") else {
+        guard LibraryTrack.isVideoID(id), let source = URL(string: "https://www.youtube.com/watch?v=\(id)") else {
             throw DownloadError.invalidTrack
         }
         let destination = audioURL(for: id)
-        if let track = downloads.first(where: { $0.id == id }),
+        if let track = downloadedTrack(id),
            let file = try? AVAudioFile(forReading: destination), file.length > 0 {
             return track
         }
@@ -129,10 +137,6 @@ final class SongLibrary {
         downloads.removeAll { $0.id == id }
         downloads.insert(savedTrack, at: 0)
         return savedTrack
-    }
-
-    private static func isVideoID(_ id: String) -> Bool {
-        id.range(of: #"^[A-Za-z0-9_-]{11}$"#, options: .regularExpression) != nil
     }
 
     private enum DownloadError: LocalizedError {

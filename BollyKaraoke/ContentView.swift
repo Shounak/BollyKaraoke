@@ -1,32 +1,32 @@
 import SwiftUI
 
 struct ContentView: View {
-    @State private var output: String?
+    let song: SampleSongPlayer
 
     var body: some View {
         VStack(spacing: 16) {
-            Button("Check yt-dlp version", action: checkVersion)
-                .buttonStyle(.borderedProminent)
+            VStack(spacing: 4) {
+                Text("Mere Khwabon Mein")
+                    .font(.title2.weight(.semibold))
+                Text("Dilwale Dulhania Le Jayenge")
+                    .foregroundStyle(.secondary)
+            }
 
-            if let output {
-                Text(output)
-                    .monospaced()
-                    .textSelection(.enabled)
-                    .accessibilityIdentifier("yt-dlp-output")
+            Button(song.buttonTitle) {
+                Task { await song.togglePlayback() }
+            }
+            .buttonStyle(.borderedProminent)
+            .disabled(song.isLoading)
+            .accessibilityIdentifier("sample-song-playback")
+
+            if let error = song.error {
+                Text(error)
+                    .font(.footnote)
+                    .foregroundStyle(.secondary)
+                    .accessibilityIdentifier("sample-song-error")
             }
         }
+        .multilineTextAlignment(.center)
         .padding()
-    }
-
-    private func checkVersion() {
-        do {
-            let version = try YTDLP.version()
-            output = version
-            print("yt-dlp \(version)")
-        } catch {
-            let message = (error as? LocalizedError)?.errorDescription ?? String(describing: error)
-            output = message
-            print(message)
-        }
     }
 }

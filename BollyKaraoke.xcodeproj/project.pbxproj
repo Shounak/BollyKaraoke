@@ -12,6 +12,7 @@
 		B0B10A000000000000000003 /* yt_dlp.whl in Resources */ = {isa = PBXBuildFile; fileRef = B0B10A000000000000000006 /* yt_dlp.whl */; };
 		B0B10A000000000000000004 /* bollykaraoke_ytdlp.py in Resources */ = {isa = PBXBuildFile; fileRef = B0B10A000000000000000007 /* bollykaraoke_ytdlp.py */; };
 		B0B10A00000000000000000A /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = B0B10A00000000000000000C /* PythonKit */; };
+		B0B10A00000000000000000D /* certifi.whl in Resources */ = {isa = PBXBuildFile; fileRef = B0B10A00000000000000000E /* certifi.whl */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -27,14 +28,12 @@
 /* Begin PBXCopyFilesBuildPhase section */
 		B0B10A000000000000000008 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
 			dstPath = "";
-			dstSubfolderSpec = 10;
+			dstSubfolder = Frameworks;
 			files = (
 				B0B10A000000000000000002 /* Python.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
 
@@ -42,6 +41,7 @@
 		B0B10A000000000000000005 /* Python.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Python.xcframework; path = Dependencies/Python.xcframework; sourceTree = "<group>"; };
 		B0B10A000000000000000006 /* yt_dlp.whl */ = {isa = PBXFileReference; lastKnownFileType = file; name = yt_dlp.whl; path = Dependencies/yt_dlp.whl; sourceTree = "<group>"; };
 		B0B10A000000000000000007 /* bollykaraoke_ytdlp.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = bollykaraoke_ytdlp.py; path = python/bollykaraoke_ytdlp.py; sourceTree = "<group>"; };
+		B0B10A00000000000000000E /* certifi.whl */ = {isa = PBXFileReference; lastKnownFileType = file; name = certifi.whl; path = Dependencies/certifi.whl; sourceTree = "<group>"; };
 		CE26EBD130B938F7006EC57A /* BollyKaraoke.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BollyKaraoke.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE26EBEA30B938F9006EC57A /* BollyKaraokeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BollyKaraokeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -83,6 +83,7 @@
 				B0B10A000000000000000007 /* bollykaraoke_ytdlp.py */,
 				B0B10A000000000000000005 /* Python.xcframework */,
 				B0B10A000000000000000006 /* yt_dlp.whl */,
+				B0B10A00000000000000000E /* certifi.whl */,
 				CE26EBD230B938F7006EC57A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -191,6 +192,7 @@
 			files = (
 				B0B10A000000000000000003 /* yt_dlp.whl in Resources */,
 				B0B10A000000000000000004 /* bollykaraoke_ytdlp.py in Resources */,
+				B0B10A00000000000000000D /* certifi.whl in Resources */,
 			);
 		};
 		CE26EBE830B938F9006EC57A /* Resources */ = {
@@ -204,13 +206,14 @@
 		B0B10A000000000000000009 /* Bundle Python standard library */ = {
 			isa = PBXShellScriptBuildPhase;
 			alwaysOutOfDate = 1;
-			buildActionMask = 2147483647;
-			files = (
-			);
 			name = "Bundle Python standard library";
-			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/bash;
-			shellScript = "set -e\nsource \"$PROJECT_DIR/Dependencies/Python.xcframework/build/utils.sh\"\ninstall_python Dependencies/Python.xcframework\n";
+			shellScript = (
+				"set -e",
+				"source \"$PROJECT_DIR/Dependencies/Python.xcframework/build/utils.sh\"",
+				"install_python Dependencies/Python.xcframework",
+				"",
+			);
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -386,6 +389,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = python/CPythonBridge.h;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -419,6 +423,7 @@
 				SWIFT_APPROACHABLE_CONCURRENCY = YES;
 				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
 				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = python/CPythonBridge.h;
 				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

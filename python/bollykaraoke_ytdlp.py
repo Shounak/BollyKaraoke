@@ -1,16 +1,19 @@
-from contextlib import redirect_stdout
-from io import StringIO
+def download_audio(url, output_path):
+    from yt_dlp import YoutubeDL
 
+    options = {
+        "format": "bestaudio[ext=m4a][protocol^=http]",
+        "outtmpl": output_path,
+        "noplaylist": True,
+        "noprogress": True,
+        "cachedir": False,
+        "js_runtimes": {},
+        "socket_timeout": 15,
+        "retries": 1,
+        "extractor_retries": 1,
+    }
+    with YoutubeDL(options) as downloader:
+        if downloader.download([url]) != 0:
+            raise RuntimeError("yt-dlp could not download the audio track")
 
-def check_version():
-    from yt_dlp import main
-
-    output = StringIO()
-    with redirect_stdout(output):
-        try:
-            main(["--ignore-config", "--version"])
-        except SystemExit as exit_status:
-            if exit_status.code != 0:
-                raise RuntimeError(f"yt-dlp exited with status {exit_status.code}") from exit_status
-
-    return output.getvalue().strip()
+    return output_path

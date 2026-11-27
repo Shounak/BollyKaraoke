@@ -9,9 +9,11 @@ import SwiftUI
 
 @main
 struct BollyKaraokeApp: App {
+    @State private var song = SampleSongPlayer()
+
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ContentView(song: song)
         }
     }
 }

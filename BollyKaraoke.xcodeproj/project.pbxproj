@@ -1,0 +1,518 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 110;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B0B10A000000000000000001 /* Python.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = B0B10A000000000000000005 /* Python.xcframework */; };
+		B0B10A000000000000000002 /* Python.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = B0B10A000000000000000005 /* Python.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		B0B10A000000000000000003 /* yt_dlp.whl in Resources */ = {isa = PBXBuildFile; fileRef = B0B10A000000000000000006 /* yt_dlp.whl */; };
+		B0B10A000000000000000004 /* bollykaraoke_ytdlp.py in Resources */ = {isa = PBXBuildFile; fileRef = B0B10A000000000000000007 /* bollykaraoke_ytdlp.py */; };
+		B0B10A00000000000000000A /* PythonKit in Frameworks */ = {isa = PBXBuildFile; productRef = B0B10A00000000000000000C /* PythonKit */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		CE26EBEB30B938F9006EC57A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CE26EBC930B938F7006EC57A /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = CE26EBD030B938F7006EC57A;
+			remoteInfo = BollyKaraoke;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		B0B10A000000000000000008 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				B0B10A000000000000000002 /* Python.xcframework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		B0B10A000000000000000005 /* Python.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = Python.xcframework; path = Dependencies/Python.xcframework; sourceTree = "<group>"; };
+		B0B10A000000000000000006 /* yt_dlp.whl */ = {isa = PBXFileReference; lastKnownFileType = file; name = yt_dlp.whl; path = Dependencies/yt_dlp.whl; sourceTree = "<group>"; };
+		B0B10A000000000000000007 /* bollykaraoke_ytdlp.py */ = {isa = PBXFileReference; lastKnownFileType = text.script.python; name = bollykaraoke_ytdlp.py; path = python/bollykaraoke_ytdlp.py; sourceTree = "<group>"; };
+		CE26EBD130B938F7006EC57A /* BollyKaraoke.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BollyKaraoke.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE26EBEA30B938F9006EC57A /* BollyKaraokeUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BollyKaraokeUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+/* End PBXFileReference section */
+
+/* Begin PBXFileSystemSynchronizedRootGroup section */
+		CE26EBD330B938F7006EC57A /* BollyKaraoke */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BollyKaraoke;
+			sourceTree = "<group>";
+		};
+		CE26EBED30B938F9006EC57A /* BollyKaraokeUITests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = BollyKaraokeUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXFileSystemSynchronizedRootGroup section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CE26EBCE30B938F7006EC57A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+				B0B10A000000000000000001 /* Python.xcframework in Frameworks */,
+				B0B10A00000000000000000A /* PythonKit in Frameworks */,
+			);
+		};
+		CE26EBE730B938F9006EC57A /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			files = (
+			);
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		CE26EBC830B938F7006EC57A = {
+			isa = PBXGroup;
+			children = (
+				CE26EBD330B938F7006EC57A /* BollyKaraoke */,
+				CE26EBED30B938F9006EC57A /* BollyKaraokeUITests */,
+				B0B10A000000000000000007 /* bollykaraoke_ytdlp.py */,
+				B0B10A000000000000000005 /* Python.xcframework */,
+				B0B10A000000000000000006 /* yt_dlp.whl */,
+				CE26EBD230B938F7006EC57A /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		CE26EBD230B938F7006EC57A /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CE26EBD130B938F7006EC57A /* BollyKaraoke.app */,
+				CE26EBEA30B938F9006EC57A /* BollyKaraokeUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		CE26EBD030B938F7006EC57A /* BollyKaraoke */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE26EBF230B938F9006EC57A /* Build configuration list for PBXNativeTarget "BollyKaraoke" */;
+			buildPhases = (
+				CE26EBCD30B938F7006EC57A /* Sources */,
+				CE26EBCE30B938F7006EC57A /* Frameworks */,
+				CE26EBCF30B938F7006EC57A /* Resources */,
+				B0B10A000000000000000009 /* Bundle Python standard library */,
+				B0B10A000000000000000008 /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			fileSystemSynchronizedGroups = (
+				CE26EBD330B938F7006EC57A /* BollyKaraoke */,
+			);
+			name = BollyKaraoke;
+			packageProductDependencies = (
+				B0B10A00000000000000000C /* PythonKit */,
+			);
+			productName = BollyKaraoke;
+			productReference = CE26EBD130B938F7006EC57A /* BollyKaraoke.app */;
+			productType = "com.apple.product-type.application";
+		};
+		CE26EBE930B938F9006EC57A /* BollyKaraokeUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CE26EBF830B938F9006EC57A /* Build configuration list for PBXNativeTarget "BollyKaraokeUITests" */;
+			buildPhases = (
+				CE26EBE630B938F9006EC57A /* Sources */,
+				CE26EBE730B938F9006EC57A /* Frameworks */,
+				CE26EBE830B938F9006EC57A /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				CE26EBEC30B938F9006EC57A /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				CE26EBED30B938F9006EC57A /* BollyKaraokeUITests */,
+			);
+			name = BollyKaraokeUITests;
+			productName = BollyKaraokeUITests;
+			productReference = CE26EBEA30B938F9006EC57A /* BollyKaraokeUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CE26EBC930B938F7006EC57A /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 2710;
+				LastUpgradeCheck = 2710;
+				TargetAttributes = {
+					CE26EBD030B938F7006EC57A = {
+						CreatedOnToolsVersion = 27.1;
+					};
+					CE26EBE930B938F9006EC57A = {
+						CreatedOnToolsVersion = 27.1;
+						TestTargetID = CE26EBD030B938F7006EC57A;
+					};
+				};
+			};
+			buildConfigurationList = CE26EBCC30B938F7006EC57A /* Build configuration list for PBXProject "BollyKaraoke" */;
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CE26EBC830B938F7006EC57A;
+			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				B0B10A00000000000000000B /* XCRemoteSwiftPackageReference "PythonKit" */,
+			);
+			preferredProjectObjectVersion = 77;
+			productRefGroup = CE26EBD230B938F7006EC57A /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CE26EBD030B938F7006EC57A /* BollyKaraoke */,
+				CE26EBE930B938F9006EC57A /* BollyKaraokeUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CE26EBCF30B938F7006EC57A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+				B0B10A000000000000000003 /* yt_dlp.whl in Resources */,
+				B0B10A000000000000000004 /* bollykaraoke_ytdlp.py in Resources */,
+			);
+		};
+		CE26EBE830B938F9006EC57A /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			files = (
+			);
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		B0B10A000000000000000009 /* Bundle Python standard library */ = {
+			isa = PBXShellScriptBuildPhase;
+			alwaysOutOfDate = 1;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			name = "Bundle Python standard library";
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/bash;
+			shellScript = "set -e\nsource \"$PROJECT_DIR/Dependencies/Python.xcframework/build/utils.sh\"\ninstall_python Dependencies/Python.xcframework\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CE26EBCD30B938F7006EC57A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+		CE26EBE630B938F9006EC57A /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			files = (
+			);
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		CE26EBEC30B938F9006EC57A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = CE26EBD030B938F7006EC57A /* BollyKaraoke */;
+			targetProxy = CE26EBEB30B938F9006EC57A /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		CE26EBF030B938F9006EC57A /* Debug configuration for PBXProject "BollyKaraoke" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = 84A68LWQ7C;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		CE26EBF130B938F9006EC57A /* Release configuration for PBXProject "BollyKaraoke" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = arm64;
+				ASSETCATALOG_COMPILER_GENERATE_SWIFT_ASSET_SYMBOL_EXTENSIONS = YES;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = 84A68LWQ7C;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu17;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 27.0;
+				LOCALIZATION_PREFERS_STRING_CATALOGS = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		CE26EBF330B938F9006EC57A /* Debug configuration for PBXNativeTarget "BollyKaraoke" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 84A68LWQ7C;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shounak.BollyKaraoke;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CE26EBF430B938F9006EC57A /* Release configuration for PBXNativeTarget "BollyKaraoke" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 84A68LWQ7C;
+				ENABLE_PREVIEWS = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shounak.BollyKaraoke;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = YES;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_DEFAULT_ACTOR_ISOLATION = MainActor;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		CE26EBF930B938F9006EC57A /* Debug configuration for PBXNativeTarget "BollyKaraokeUITests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 84A68LWQ7C;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shounak.BollyKaraokeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BollyKaraoke;
+			};
+			name = Debug;
+		};
+		CE26EBFA30B938F9006EC57A /* Release configuration for PBXNativeTarget "BollyKaraokeUITests" */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 84A68LWQ7C;
+				GENERATE_INFOPLIST_FILE = YES;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.shounak.BollyKaraokeUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				STRING_CATALOG_GENERATE_SYMBOLS = NO;
+				SWIFT_APPROACHABLE_CONCURRENCY = YES;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_UPCOMING_FEATURE_MEMBER_IMPORT_VISIBILITY = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = BollyKaraoke;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CE26EBCC30B938F7006EC57A /* Build configuration list for PBXProject "BollyKaraoke" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE26EBF030B938F9006EC57A /* Debug configuration for PBXProject "BollyKaraoke" */,
+				CE26EBF130B938F9006EC57A /* Release configuration for PBXProject "BollyKaraoke" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		CE26EBF230B938F9006EC57A /* Build configuration list for PBXNativeTarget "BollyKaraoke" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE26EBF330B938F9006EC57A /* Debug configuration for PBXNativeTarget "BollyKaraoke" */,
+				CE26EBF430B938F9006EC57A /* Release configuration for PBXNativeTarget "BollyKaraoke" */,
+			);
+			defaultConfigurationName = Release;
+		};
+		CE26EBF830B938F9006EC57A /* Build configuration list for PBXNativeTarget "BollyKaraokeUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CE26EBF930B938F9006EC57A /* Debug configuration for PBXNativeTarget "BollyKaraokeUITests" */,
+				CE26EBFA30B938F9006EC57A /* Release configuration for PBXNativeTarget "BollyKaraokeUITests" */,
+			);
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		B0B10A00000000000000000B /* XCRemoteSwiftPackageReference "PythonKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/pvieito/PythonKit.git";
+			requirement = {
+				kind = revision;
+				revision = fe7d97334600b0fc11fbef5e0525f93eaa68ef7e;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		B0B10A00000000000000000C /* PythonKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = B0B10A00000000000000000B /* XCRemoteSwiftPackageReference "PythonKit" */;
+			productName = PythonKit;
+		};
+/* End XCSwiftPackageProductDependency section */
+	};
+	rootObject = CE26EBC930B938F7006EC57A /* Project object */;
+	validationLevel = 1;
+}

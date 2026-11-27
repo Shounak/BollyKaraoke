@@ -3,7 +3,7 @@ import Foundation
 import Observation
 
 @Observable
-final class SampleSongPlayer: NSObject, AVAudioPlayerDelegate {
+final class SampleSongPlayer {
     private static let videoID = "s1LozokQjIg"
     private static let sourceURL = URL(string: "https://www.youtube.com/watch?v=\(videoID)")!
     private static let audioURL = URL.applicationSupportDirectory
@@ -13,8 +13,24 @@ final class SampleSongPlayer: NSObject, AVAudioPlayerDelegate {
     private(set) var isLoading = false
     private(set) var isPlaying = false
     private(set) var error: String?
+    var pitchSemitones = 0.0 {
+        didSet { timePitch.pitch = Float(pitchSemitones * 100) }
+    }
+    var tempoPercent = 100.0 {
+        didSet { timePitch.rate = Float(tempoPercent / 100) }
+    }
+
     private var hasAudio = FileManager.default.fileExists(atPath: SampleSongPlayer.audioURL.path)
-    @ObservationIgnored private var player: AVAudioPlayer?
+    @ObservationIgnored private let engine = AVAudioEngine()
+    @ObservationIgnored private let player = AVAudioPlayerNode()
+    @ObservationIgnored private let timePitch = AVAudioUnitTimePitch()
+    @ObservationIgnored private var audioFile: AVAudioFile?
+    @ObservationIgnored private var scheduledPlayback: UUID?
+
+    init() {
+        engine.attach(player)
+        engine.attach(timePitch)
+    }
 
     var buttonTitle: String {
         if isLoading { return "Downloading…" }
@@ -26,45 +42,69 @@ final class SampleSongPlayer: NSObject, AVAudioPlayerDelegate {
         guard !isLoading else { return }
         error = nil
 
-        if let player, player.isPlaying {
+        if engine.isRunning, player.isPlaying {
             player.pause()
+            engine.pause()
             isPlaying = false
             return
         }
 
         do {
-            if player == nil {
+            let file: AVAudioFile
+            if let audioFile {
+                file = audioFile
+            } else {
                 isLoading = true
                 defer { isLoading = false }
-                player = try await loadAudio()
-                player?.delegate = self
+                file = try await loadAudio()
+                try engine.connectNode(player, to: timePitch, format: file.processingFormat)
+                try engine.connectNode(timePitch, to: engine.mainMixerNode, format: file.processingFormat)
+                audioFile = file
                 hasAudio = true
             }
 
             let session = AVAudioSession.sharedInstance()
             try session.setCategory(.playback)
             try session.setActive(true)
-            guard player?.play() == true else { throw PlaybackError.cannotPlay }
+            if !engine.isRunning {
+                try engine.start()
+            }
+            if scheduledPlayback == nil {
+                schedule(file)
+            }
+            try player.playAudio()
             isPlaying = true
         } catch {
-            isPlaying = false
+            stopPlayback()
             self.error = error.localizedDescription
             print("Sample song: \(error)")
         }
     }
 
-    func audioPlayerDidFinishPlaying(_ player: AVAudioPlayer, successfully flag: Bool) {
-        player.currentTime = 0
-        isPlaying = false
-        if !flag {
-            error = PlaybackError.cannotPlay.localizedDescription
+    private func schedule(_ file: AVAudioFile) {
+        let playback = UUID()
+        scheduledPlayback = playback
+        player.scheduleFile(file, at: nil, completionCallbackType: .dataPlayedBack) { @Sendable [weak self] _ in
+            guard let self else { return }
+            // Stopping the node from inside its completion handler can deadlock.
+            Task { @MainActor in
+                guard self.scheduledPlayback == playback else { return }
+                self.stopPlayback()
+            }
         }
     }
 
-    private func loadAudio() async throws -> AVAudioPlayer {
+    private func stopPlayback() {
+        scheduledPlayback = nil
+        player.stop()
+        engine.pause()
+        isPlaying = false
+    }
+
+    private func loadAudio() async throws -> AVAudioFile {
         let fileManager = FileManager.default
         let savedAudio = Self.audioURL
-        if let existing = try? AVAudioPlayer(contentsOf: savedAudio), existing.duration > 0 {
+        if let existing = try? AVAudioFile(forReading: savedAudio), existing.length > 0 {
             return existing
         }
 
@@ -85,7 +125,7 @@ final class SampleSongPlayer: NSObject, AVAudioPlayerDelegate {
             throw PlaybackError.cannotPlay
         }
         try fileManager.moveItem(at: audio, to: savedAudio)
-        return try AVAudioPlayer(contentsOf: savedAudio)
+        return try AVAudioFile(forReading: savedAudio)
     }
 
     private enum PlaybackError: LocalizedError {
